@@ -23,6 +23,17 @@ describe('generate jay-html element hydrate', () => {
             );
         });
 
+        it('for html-string binding under an element with dynamic attributes', async () => {
+            const folder = 'basics/html-string-dynamic-attrs';
+            const hydrateFile = await readFileAndGenerateElementHydrateFile(folder);
+            expect(hydrateFile.validations).toEqual([]);
+            const code = await prettify(hydrateFile.val);
+            // The bound HTML is adopted as HTML (dh), not as escaped text.
+            expect(code).toContain('dh(');
+            expect(code).not.toContain('adoptText(');
+            expect(code).toEqual(await readFixtureElementHydrateFile(folder));
+        });
+
         it('for composite with dynamic text', async () => {
             const folder = 'basics/composite';
             const hydrateFile = await readFileAndGenerateElementHydrateFile(folder);

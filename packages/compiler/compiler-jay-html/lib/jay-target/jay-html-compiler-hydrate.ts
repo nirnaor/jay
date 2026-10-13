@@ -1266,7 +1266,7 @@ function renderHydrateElementContent(
         );
     }
 
-    if (isHtmlStringChild && textFragment && !hasDynamicAttrs) {
+    if (isHtmlStringChild && textFragment) {
         const accessor = textFragment.rendered.replace(/^dt\(/, '').replace(/\)$/, '');
         const refSuffix = renderedRef.rendered ? `, ${renderedRef.rendered}` : '';
         return new RenderFragment(

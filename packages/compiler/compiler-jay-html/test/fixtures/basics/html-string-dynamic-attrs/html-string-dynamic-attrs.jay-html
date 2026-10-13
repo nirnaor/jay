@@ -1,0 +1,14 @@
+<html>
+<head>
+    <script type="application/jay-data">
+data:
+   hook: string
+   richContent: html-string
+    </script>
+</head>
+<body>
+<div>
+    <div class="content" data-hook="{hook}">{richContent}</div>
+</div>
+</body>
+</html>
